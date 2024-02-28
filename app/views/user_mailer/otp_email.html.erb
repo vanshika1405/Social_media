@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %>,</h1>
+
+    <p>Your OTP for password reset is: <strong><%= @otp %></strong>.</p>
+    <p>Please use this OTP to proceed with the password reset.</p>
+    <%= link_to 'Generate OTP', { controller: 'passwords', action: 'generate_otp' }, method: :post %>
+
+    <p>Thank you,<br>Your Application Team</p>
+  </body>
+</html>
+
+

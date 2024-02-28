@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Verification</title>
+</head>
+<body>
+  <h1>Hi <%= @user.name %>,</h1>
+  <p>Welcome to our application! Please click the link below to verify your account.</p>
+  
+  <%= link_to 'Verify Account', account_verifications_url, method: :patch %>
+  <%= link_to 'Verify Account', account_verifications_url, method: :post %>
+
+</body>
+</html>
+
