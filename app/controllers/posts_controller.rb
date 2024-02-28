@@ -1,5 +1,4 @@
 
-# posts controller
 class PostsController < ApplicationController
   before_action :authorize_request
   before_action :set_post, only: [:show]

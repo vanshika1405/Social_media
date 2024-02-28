@@ -19,6 +19,6 @@ class Friendship < ApplicationRecord
     update(status: :accepted, blocked_at: nil)
   end
 
-  # ... other model code ...
+  
 
 end

@@ -2,7 +2,7 @@
 class LikesController < ApplicationController
   before_action :authorize_request
 
-  # ... existing code ...
+ 
 
   def create
     likeable_type = params[:likeable_type]

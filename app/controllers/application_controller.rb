@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
   def check_token_expiry
     return unless token_expired?
 
-    # You may choose to handle token expiry differently here, e.g., log out the user
+    
     render json: { error: 'Token expired' }, status: :unauthorized
   end
 
@@ -35,11 +35,11 @@ class ApplicationController < ActionController::API
   
     return unless token_expired?
 
-    # Example: Refresh the token by issuing a new one
+    
     new_payload = { user_id: current_user.id, exp: Time.now.to_i + 3600 } # Expires in 1 hour
     new_token = TokenService.encode(new_payload)
 
-    # Update Authorization header with the new token
+    
     request.headers['Authorization'] = "Bearer #{new_token}"
   end
 end
