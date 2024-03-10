@@ -37,6 +37,9 @@ get '/posts', to: 'posts#index'
   post '/login', to: 'users#login'
   post '/posts', to: 'posts#create'
   post '/comments', to: 'comments#create'
+  
+
+
   post '/likes', to: 'likes#create'
   delete '/posts/:id', to: 'posts#destroy'
 
@@ -48,6 +51,39 @@ get '/posts', to: 'posts#index'
   delete '/friendships/:id/reject', to: 'friendships#reject', as: :reject_friendship
   delete '/posts/:id/unlike', to: 'posts#unlike', as: :unlike_post
   delete '/comments/:id/unlike', to: 'comments#unlike', as: :unlike_comment
+
+
+
+  
+
+  get 'posts/index_everyone/:page', to: 'posts#index_everyone', as: 'index_everyone'
+
+  get 'posts/index_my_friends/:page', to: 'posts#index_my_friends', as: 'index_my_friends'
+  get 'posts/index_only_me/:page', to: 'posts#index_only_me', as: 'index_only_me'
+
+
+  get '/blocked_users', to: 'blocked_users#index'
+  post 'blocked_users/block', to: 'blocked_users#block'
+  delete 'blocked_users/unblock', to: 'blocked_users#unblock'
+
+
+post '/posts/:id/share', to: 'posts#share_post', as: 'share_post'
+
+
+
+post '/posts/:id/unfollow_user', to: 'posts#unfollow_user'
+post '/posts/:id/unfriend_user', to: 'posts#unfriend_user'
+post '/posts/:id/become_friends_again', to: 'posts#become_friends_again'
+
+
+post '/posts/:id/create_reaction/:kind', to: 'posts#create_reaction', as: 'create_reaction'
+
+
+  patch '/users/update', to: 'users#update'  
+  post '/users/upload_profile_pic', to: 'users#upload_profile_pic'
+  post '/users/upload_cover_pic', to: 'users#upload_cover_pic'
+
+  post '/send_greetings', to: 'users#send_greetings'
 
 end
 

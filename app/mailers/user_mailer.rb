@@ -16,6 +16,11 @@ class UserMailer < ApplicationMailer
         @user = user
         mail(to: @user.email, subject: 'Password Reset Confirmation')
       end
+
+      def greeting_email(user)
+        @user = user
+        mail(to: @user.email, subject: 'Welcome!')
+      end
   end
   
   

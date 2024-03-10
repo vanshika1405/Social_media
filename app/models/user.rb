@@ -22,6 +22,25 @@ class User < ApplicationRecord
     has_many :friendships, dependent: :destroy
 
 
+    has_many :blocked_users, dependent: :destroy
+    has_many :blocked, through: :blocked_users, source: :blocked_user
+
+    has_one_attached :profile_pic
+    has_one_attached :cover_pic
+
+
+    has_many :posts, dependent: :destroy
+    has_many :reactions, dependent: :destroy
+
+
+    def friends
+      friends_from_received = received_requests.where('friendships.status = ?', 'accepted')
+      friends_from_sent = sent_requests.where('friendships.status = ?', 'accepted')
+  
+      friends_from_received + friends_from_sent
+    end
+
+
 
     def generate_otp
       self.otp = SecureRandom.hex(3).upcase
@@ -38,6 +57,9 @@ class User < ApplicationRecord
     def reset_password(new_password)
       update(password: new_password, otp: nil)
     end
+
+
+  
   end
   
   

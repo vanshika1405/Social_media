@@ -1,0 +1,7 @@
+<!-- app/views/posts/show.html.erb -->
+<%= @post.title %>
+<%= @post.content %>
+
+<% @post.images.each do |image| %>
+  <%= cl_image_tag image.key, width: 300, height: 200, crop: :fill %>
+<% end %>
