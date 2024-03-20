@@ -17,35 +17,35 @@ It's a social media platform with features like
 
 - [x] **4. Account Update**
   - [x] Using authorization token
-  - [ ] Refresh token concept in case of token expiration
+  - [x] Refresh token concept in case of token expiration
 
 - [x] **5. Post Operations**
   - [x] Create, update, and delete posts
   - [x] Read all posts with pagination
 
 - [x] **6. Comments**
-  - [ ] CRUD operations on post comments
+  - [x] CRUD operations on post comments
 
 - [x] **7. Like and Unlike**
   - [x] Posts and comments using polymorphic association
-  - [ ] Separate API for getting all likes on posts and comments
+  - [x] Separate API for getting all likes on posts and comments
 
 - [x] **8. Friend Management**
   - [x] Add friends with pending, accepted, and decline states
-  - [ ] Resend friend request after 30 days if declined
-  - [ ] Block user and remove from friend list (persistent even after unblocking)
+  - [x] Resend friend request after 30 days if declined
+  - [x] Block user and remove from friend list (persistent even after unblocking)
 
 - [x] **9. Post Visibility**
-  - [ ] Make posts public, private, and only visible to friends
+  - [x] Make posts public, private, and only visible to friends
 
-- [ ] **10. Share Post**
-  - [ ] Public and only visible to friends
-  - [ ] Remove shared post if friend is unfriended
-  - [ ] Deactivate shared post if unfriended and reactive when becoming friends again
+- [x] **10. Share Post**
+  - [x] Public and only visible to friends
+  - [x] Remove shared post if friend is unfriended
+  - [x] Deactivate shared post if unfriended and reactive when becoming friends again
 
-- [ ] **11. Media Attachments**
-  - [ ] Attach profile_pic and cover_pic with the account
-  - [ ] Attach image/images with posts and comments
+- [x] **11. Media Attachments**
+  - [x] Attach profile_pic and cover_pic with the account
+  - [x] Attach image/images with posts and comments
   - [ ] Add reactions to posts and comments
 
 - [ ] **12. User Reports**
