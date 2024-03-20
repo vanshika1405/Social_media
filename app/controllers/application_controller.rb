@@ -1,22 +1,26 @@
 class ApplicationController < ActionController::API
   before_action :authorize_request, :check_token_expiry, :refresh_token
 
+
   private
 
   def authorize_request
-    header = request.headers['Authorization']
-    header = header.split(' ').last if header
-
-    begin
-      @decoded = TokenService.decode(header)
-      @current_user = User.find(@decoded[:user_id])
-    rescue ActiveRecord::RecordNotFound => e
-      render json: { error: 'User not found' }, status: :unauthorized
-    rescue JWT::DecodeError => e
-      render json: { error: 'Invalid token' }, status: :unauthorized
-    end
+    @current_user = User.find_by(id: decoded_token[:user_id]) if decoded_token
+  rescue JWT::DecodeError => e
+    render json: { error: e.message }, status: :unauthorized
   end
 
+  def decoded_token
+    @decoded_token ||= TokenService.decode(http_auth_header)
+  end
+
+  def http_auth_header
+    if request.headers['Authorization'].present?
+      return request.headers['Authorization'].split(' ').last
+    end
+    nil
+  end
+  
   def check_token_expiry
     return unless token_expired?
 

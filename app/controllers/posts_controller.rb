@@ -3,9 +3,6 @@ class PostsController < ApplicationController
   before_action :authorize_request
   before_action :set_post, only: [:show]
 
-
-
-
 def index_everyone
   @user = @current_user
   @posts = if params[:page] == 'all'
@@ -119,16 +116,7 @@ end
       render json: { error: 'You are not allowed to share this post' }, status: :forbidden
     end
   end
-  def create_reaction
-    @post = Post.find(params[:id])
-    @reaction = @post.reactions.build(user: @current_user, kind: params[:kind])
-
-    if @reaction.save
-      render json: @post, status: :created
-    else
-      render json: { error: 'Failed to create reaction', errors: @reaction.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
+  
 
 
 
