@@ -6,16 +6,15 @@ Rails.application.routes.draw do
 post '/account_verifications', to: 'account_verifications#create'
 
 patch '/verify_account/:id', to: 'account_verifications#update', as: 'verify_account'
+patch '/account_verifications', to: 'account_verifications#update'
 
 
 post '/refresh_token', to: 'application#refresh_token'
 
 
-post 'passwords/generate_otp', to: 'passwords#generate_otp'
-
-
-patch '/passwords/reset_with_otp', to: 'passwords#reset_with_otp'
-patch '/passwords/new_password', to: 'passwords#new_password'
+post '/passwords/generate_otp', to: 'passwords#generate_otp'
+  post '/passwords/reset_with_otp', to: 'passwords#reset_with_otp'
+  patch '/passwords/new_password', to: 'passwords#new_password'
 
 
 

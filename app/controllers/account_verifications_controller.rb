@@ -2,7 +2,7 @@ class AccountVerificationsController < ApplicationController
     before_action :authorize_request
   
     def create
-      # Assuming you have a method to send verification emails
+      
       UserMailer.with(user: @current_user).account_verification.deliver_now
       render json: { message: 'Account verification email sent successfully' }
     end

@@ -8,7 +8,10 @@ class ApplicationController < ActionController::API
     @current_user = User.find_by(id: decoded_token[:user_id]) if decoded_token
   rescue JWT::DecodeError => e
     render json: { error: e.message }, status: :unauthorized
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'User not found' }, status: :not_found
   end
+  
 
   def decoded_token
     @decoded_token ||= TokenService.decode(http_auth_header)

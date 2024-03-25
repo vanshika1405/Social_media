@@ -16,15 +16,16 @@ class BlockedUsersController < ApplicationController
         render json: { message: 'User blocked successfully' }, status: :ok
       end
   
-    def unblock
-      blocked_user = @current_user.blocked_users.find_by(id: params[:user_id])
-      if blocked_user
-        blocked_user.destroy
-        render json: { message: 'User unblocked successfully' }, status: :ok
-      else
-        render json: { error: 'User not found in blocked list' }, status: :not_found
+      def unblock
+        blocked_user = @current_user.blocked_users.find_by(blocked_user_id: params[:user_id])
+        if blocked_user
+          blocked_user.destroy
+          render json: { message: 'User unblocked successfully' }, status: :ok
+        else
+          render json: { error: 'User not found in blocked list' }, status: :not_found
+        end
       end
-    end
+      
   end
   
   

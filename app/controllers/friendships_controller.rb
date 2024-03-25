@@ -4,17 +4,20 @@ class FriendshipsController < ApplicationController
     def create
       friend = User.find(params[:friend_id])
       friendship = @current_user.friendships.build(friend: friend)
-  
+      
       if friendship.save
         render json: friendship, status: :created
       else
+       
         if friendship.errors[:base].include?("Friend request can only be sent after 30 days from the last declined request.")
-          render json: { errors: friendship.errors[:base] }, status: :unprocessable_entity
+          render json: { error: "Cannot send friend request yet. Cooldown period active" }, status: :unprocessable_entity
         else
           render json: { errors: friendship.errors.full_messages }, status: :unprocessable_entity
         end
       end
     end
+    
+    
   
     def accept
       friendship = Friendship.find(params[:id])
